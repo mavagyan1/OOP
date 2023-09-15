@@ -5,7 +5,7 @@
 
 class ConsoleOutput: Ioutput  {
     public:
-    void print(std::string&) override;
+    void print(std::string_view) override;
 }; 
 
 #endif //__CONSOLE_OUTPUT_HPP__

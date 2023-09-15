@@ -3,7 +3,7 @@
 #include "ICommand.hpp"
 #include <string>
 #include <memory>
-#include <map>
+#include <unordered_map>
 
 
 class CommandBuilder {
@@ -15,7 +15,7 @@ public:
     CommandPtr& buildCommand(std::string);
  
  private:
-    std::map<std::string, CommandPtr> commands;
+    std::unordered_map<std::string, CommandPtr> commands;
     void init();
 
 };

@@ -6,7 +6,7 @@
 
 class ICommand {
 public:
-    virtual std::string execute(std::stringstream& args) = 0;
+    virtual std::string execute(std::stringstream args) = 0;
 };
 
 #endif //__ICOMMAND_HPP__

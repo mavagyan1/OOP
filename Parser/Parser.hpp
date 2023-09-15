@@ -6,11 +6,11 @@
 #include <utility> //std::pair
 
 
-using ParsingResult = std::pair<std::string,std::stringstream&>;
+using ParsingResult = std::pair<std::string,std::stringstream>;
 
 class Parser {
     public:
-    ParsingResult parse(std::stringstream&);
+    ParsingResult parse(std::stringstream);
 };
 
 #endif //__PARSER_HPP__

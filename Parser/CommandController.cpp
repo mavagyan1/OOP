@@ -1,22 +1,25 @@
 #include "CommandController.hpp"
 #include <iostream>
+#include <string>
+#include <utility>
 
 void CommandController::run() {
     while(true) {
         try
         {
             auto input = _input.read();
-            ParsingResult parsed_cmd = _parser.parse(input);
+            auto parsed_cmd = _parser.parse(std::move(input));
             auto& cmd = _command_builder.buildCommand(parsed_cmd.first);
             if(!cmd)
                 break;
-            auto result = cmd->execute(parsed_cmd.second);
+            auto result = cmd->execute(std::move(parsed_cmd.second));
             _output.print(result);
 
         }
         catch(std::runtime_error error)
         {
-           std::cout << error.what() << std::endl;
+            _output.print(error.what());
+           //std::cout << error.what() << std::endl;
         }
         
     }

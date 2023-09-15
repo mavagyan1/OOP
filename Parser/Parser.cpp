@@ -1,7 +1,7 @@
 #include "Parser.hpp"
 #include <stdexcept>
 
-ParsingResult Parser::parse(std::stringstream& inputStream) {
+ParsingResult Parser::parse(std::stringstream inputStream) {
     std::stringstream args;
     std::string command;
     std::string token;
@@ -24,5 +24,6 @@ ParsingResult Parser::parse(std::stringstream& inputStream) {
         args << token << " ";
     } else
         throw std::runtime_error("incorrect command");
-    return std::pair<std::string,std::stringstream&>(command, args);
+
+    return std::pair<std::string,std::stringstream>(command, std::move(args));
 }
