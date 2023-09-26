@@ -7,6 +7,7 @@
 class Ioutput {
     public:
     virtual void  print(std::string_view) = 0;
+    virtual ~Ioutput() = default;
 }; 
 
 #endif //__IOUTPUT_HPP__

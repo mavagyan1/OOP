@@ -1,7 +1,7 @@
 #include "consoleInput.hpp"
 #include "consoleOutput.hpp"
 #include "Parser.hpp"
-#include "CommandBuilder.hpp"
+#include "CommandRegistry.hpp"
 
 class CommandController {
 public:
@@ -11,5 +11,5 @@ private:
     ConsoleInput  _input;
     ConsoleOutput _output;
     Parser _parser;
-    CommandBuilder _command_builder;
+    CommandRegistry _command_builder;
 };

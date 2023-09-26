@@ -1,16 +1,22 @@
 #ifndef __PARSER_HPP__
 #define __PARSER_HPP__
 
+#include "CommandRegistry.hpp"
+#include "Command.hpp"
 #include <string>
 #include <sstream> //std::stringstream
-#include <utility> //std::pair
+#include <memory> //std::unique_ptr
 
-
-using ParsingResult = std::pair<std::string,std::stringstream>;
 
 class Parser {
-    public:
-    ParsingResult parse(std::stringstream);
+private:
+    using CommandPtr = std::unique_ptr<Command>;
+
+public:
+    CommandPtr parse(std::stringstream);
+
+private:
+    CommandRegistry _registry;
 };
 
 #endif //__PARSER_HPP__

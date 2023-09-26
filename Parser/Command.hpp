@@ -1,46 +1,26 @@
-#ifndef __COMMAND_HPP__
-#define __COMMAND_HPP__
+#ifndef __Command_HPP__
+#define __Command_HPP__
 
-#include "ICommand.hpp"
+#include <any>
+#include <sstream>
+#include <string>
+#include <unordered_map>
 
-class Add : public ICommand {
+class Command {
+private:
+    using Key = std::string;
+    using Value = std::any;
+    using Arguments = std::unordered_map<Key,Value>;
+
 public:
-    virtual std::string execute(std::stringstream args);
+    void addArgument(Key,Value);
+    bool checkArgument(Key) const;
+    virtual std::string execute(std::stringstream args) = 0;
+    virtual Command* getCommand() = 0;
+    virtual ~Command() = default;
+
+protected:
+    Arguments _arguments;
 };
 
-class Sub : public ICommand {
-public:
-    virtual std::string execute(std::stringstream args);
-};
-
-class Mul : public ICommand {
-public:
-    virtual std::string execute(std::stringstream args);
-};
-
-class Div : public ICommand {
-public:
-    virtual std::string execute(std::stringstream args);
-};
-
-class And : public ICommand {
-public:
-    virtual std::string execute(std::stringstream args);
-};
-
-class Or : public ICommand {
-public:
-    virtual std::string execute(std::stringstream args);
-};
-
-class Xor : public ICommand {
-public:
-    virtual std::string execute(std::stringstream args);
-};
-
-class Not : public ICommand {
-public:
-    virtual std::string execute(std::stringstream args);
-};
-
-#endif //__COMMAND_HPP__
+#endif //__Command_HPP__

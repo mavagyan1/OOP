@@ -6,6 +6,7 @@
 class Iinput {
     public:
     virtual  std::stringstream  read() = 0;
+    virtual ~Iinput() = default;
 }; 
 
 #endif //__IINPUT_HPP__
