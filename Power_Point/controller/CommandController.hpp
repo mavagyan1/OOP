@@ -1,7 +1,7 @@
-#include "consoleInput.hpp"
-#include "consoleOutput.hpp"
-#include "Parser.hpp"
-#include "CommandRegistry.hpp"
+#include "../input/consoleInput.hpp"
+#include "../output/consoleOutput.hpp"
+#include "../parser/Parser.hpp"
+#include "../commandRegistry/CommandRegistry.hpp"
 
 class CommandController {
 public:

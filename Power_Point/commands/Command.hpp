@@ -15,7 +15,7 @@ private:
 public:
     void addArgument(Key,Value);
     bool checkArgument(Key) const;
-    virtual std::string execute(std::stringstream args) = 0;
+    virtual std::string execute() = 0;
     virtual Command* getCommand() = 0;
     virtual ~Command() = default;
 

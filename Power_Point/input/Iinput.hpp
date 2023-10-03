@@ -4,7 +4,7 @@
 #include <sstream>
 
 class Iinput {
-    public:
+public:
     virtual  std::stringstream  read() = 0;
     virtual ~Iinput() = default;
 }; 

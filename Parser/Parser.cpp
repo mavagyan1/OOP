@@ -1,29 +1,20 @@
 #include "Parser.hpp"
 #include <stdexcept>
 
-ParsingResult Parser::parse(std::stringstream inputStream) {
-    std::stringstream args;
+auto Parser::parse(std::stringstream inputStream) -> CommandPtr {
     std::string command;
-    std::string token;
-    
-    inputStream >> command;
-    inputStream >> token;
-    if(token == "-args") {
-        while(inputStream >> token)
-            args << token << " ";
-    } else if(token == "-arg1") {
-        inputStream >> token;
-        args << token << " ";
-        inputStream >> token;
-        if(token != "-arg2")
-            throw std::runtime_error("incorrect command");
-        inputStream >> token;
-        args << token << " ";
-    } else if(token == "-arg") {
-        inputStream >> token;
-        args << token << " ";
-    } else
-        throw std::runtime_error("incorrect command");
+    std::string key;
+    std::string value;
 
-    return std::pair<std::string,std::stringstream>(command, std::move(args));
+    inputStream >> command;
+    auto cmd_ptr =  _registry.findCommand(command);
+
+    while (inputStream >> key && inputStream >> value) {
+        if(cmd_ptr->checkArgument(key))
+            cmd_ptr->addArgument(key,value);
+        else
+            throw std::runtime_error("Incorrect command argument");
+    }
+        
+    return cmd_ptr;
 }
