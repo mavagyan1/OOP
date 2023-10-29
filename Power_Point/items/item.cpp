@@ -2,8 +2,9 @@
 
 int Item::_nextId = 1;
 
-Item::Item() {
+Item::Item(std::unordered_map<std::string, std::string> arguments) {
     initArguments();
+
     _id = _nextId++;
 }
 

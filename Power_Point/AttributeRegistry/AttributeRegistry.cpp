@@ -10,7 +10,7 @@ AttributeRegistry::AttributeRegistry(){
 void AttributeRegistry::init() {
     _attributes.insert({"-color",AttributeBuilderPtr(new ColorAttrubuteBuilder)});
 }
-auto AttributeRegistry::findAttribute(std::string attribute )-> AttributeBuilderPtr {
+auto AttributeRegistry::findAttribute(std::string attribute ) -> AttributeBuilderPtr {
     auto it = _attributes.find(attribute);
     if(it == _attributes.end()) {
          std::cout << "Cannot find the attribute"<< std::endl; //TODO:Add strickt checks

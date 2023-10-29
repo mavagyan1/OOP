@@ -4,6 +4,7 @@
 #include <any>
 #include <string>
 #include <unordered_map>
+#inlcude "../Attribute/Attribute.hpp"
 
 class Item {
 public:
@@ -13,13 +14,13 @@ public:
     void setLineStyle(std::string);
 
 protected:
-    Item();
+    Item(std::unordered_map<std::string, Attribute*>);
 
 private:
     void initArguments();
     int getId() const;
 
-    std::unordered_map<std::string,std::any> _attributes;
+    std::unordered_map<std::string,Attribute*> _attributes;
     static int _nextId;
     int _id;
 };

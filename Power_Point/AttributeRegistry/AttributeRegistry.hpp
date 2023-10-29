@@ -6,7 +6,7 @@
 #include <string>
 #include <unordered_map>
 
-class AttributeRegistry{
+class AttributeRegistry {
 private:
     using AttributeBuilderPtr = std::unique_ptr<IAttributeBuilder>;
     using Registry = std::unordered_map<std::string,AttributeBuilderPtr>;
@@ -16,6 +16,8 @@ public:
     AttributeBuilderPtr findAttribute(std::string);
 
 private:
+    AttributeRegistry();
+    static AttributeRegistry* attributeRegistry;
     Registry _attributes;
     void init();
 };

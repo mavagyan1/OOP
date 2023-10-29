@@ -1,6 +1,7 @@
 #include "ItemRegistry.hpp"
 #include "../ItemBuilder/ItemBuilder.hpp"
 #include "../ItemBuilder/RectangleItemBuilder.hpp"
+#inlcude <stdexcept>
 #include <iostream>
 
 ItemRegistry::ItemRegistry() {
@@ -8,13 +9,13 @@ ItemRegistry::ItemRegistry() {
 }
 
 void ItemRegistry::init() {
-    _items.insert({"add",ItemBuilderPtr(new RectangleItemBuilder)});
+    _items.insert({"rectangle",ItemBuilderPtr(new RectangleItemBuilder)});
 }
 
-auto ItemRegistry::findCommand(std::string command) -> ItemBuilderPtr {
-    auto it = _items.find(command);
+auto ItemRegistry::findItem(std::string item) -> ItemBuilderPtr {
+    auto it = _items.find(item);
     if(it == _items.end()) {
-        std::cout << "Cannot find the command"<< std::endl;
+        throw std::runtime_error("Invalid item name");
     }
     return std::move(it->second);
 }

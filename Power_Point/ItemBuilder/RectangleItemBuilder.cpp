@@ -1,10 +1,8 @@
 #include "RectangleItemBuilder.hpp"
 #include "../items/rectangle.hpp"
 
-Item* RectangleItemBuilder::buildItem() {
+Item* RectangleItemBuilder::buildItem(std::unordered_map<std::string, std::string> arguments) {
     auto item = new Rectangle{};
-    /*
-    * Comlete if there is a need
-    */
+
     return item;
 }

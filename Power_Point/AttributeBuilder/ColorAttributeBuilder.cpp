@@ -1,5 +1,9 @@
 #include "ColorAttributeBuilder.hpp"
 
-Attribute* ColorAttrubuteBuilder::buildAttribute(std::string attribute) {
+Attribute* ColorAttributeBuilder::buildAttribute(std::string attribute) {
     return new ColorAttribute(attribute);
+}
+
+ ColorAttributeBuilder::ColorAttributeBuilder() {
+    registry = new AttributeRegistry();
 }
