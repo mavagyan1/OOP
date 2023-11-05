@@ -11,8 +11,6 @@ public:
     void setLineColour(std::string);
     void setFillColour(std::string);
     void setLineStyle(std::string);
-    void setAttribute(std::pair<std::string,std::string>);
-    bool containsAttribute(std::string) const;
 
 protected:
     Item();
@@ -21,7 +19,7 @@ private:
     void initArguments();
     int getId() const;
 
-    std::unordered_map<std::string,std::string> _attributes;
+    std::unordered_map<std::string,std::any> _attributes;
     static int _nextId;
     int _id;
 };

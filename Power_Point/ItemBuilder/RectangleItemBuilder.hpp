@@ -4,7 +4,7 @@
 
 class RectangleItemBuilder : public IItemBuilder {
 public:
-    Item* buildItem(std::unordered_map<std::string,std::string>);
+    Item* buildItem() override;
 };
 
 #endif//__RECTANGLE_ITEM_BUILDER_HPP__
