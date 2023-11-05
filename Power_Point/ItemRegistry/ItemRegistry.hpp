@@ -11,7 +11,7 @@ private:
 
 public: 
     ItemRegistry();
-    ItemBuilderPtr findCommand(std::string);
+    ItemBuilderPtr findItem(std::string);
 
 private:
     Registry _items;

@@ -7,7 +7,6 @@ class Add : public Command {
 public:
     Add();
     virtual std::string execute();
-    virtual Command* getCommand();
 private:
     void initArguments();
 };

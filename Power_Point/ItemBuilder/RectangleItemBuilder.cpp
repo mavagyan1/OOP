@@ -1,10 +1,13 @@
 #include "RectangleItemBuilder.hpp"
 #include "../items/rectangle.hpp"
+#include <functional>
 
-Item* RectangleItemBuilder::buildItem() {
+Item* RectangleItemBuilder::buildItem(std::unordered_map<std::string,std::string> attributes) {
     auto item = new Rectangle{};
-    /*
-    * Comlete if there is a need
-    */
+    
+    std::for_each(std::begin(attributes), std::end(attributes),[&item](const auto& attribute){
+        item->setAttribute(attribute);
+    });
+
     return item;
 }

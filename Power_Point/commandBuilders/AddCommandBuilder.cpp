@@ -10,8 +10,11 @@ Command* AddCommandBuilder::buildCommand(Arguments& args) {
     for(auto it = args.begin(); it != args.end(); ++it) {
         auto key = it->first;
         auto value = it->second;
+        
+        
         cmd->addArgument(key,value);
     }
 
     return cmd;
 }
+
