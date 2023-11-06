@@ -16,8 +16,8 @@ int main() {
     Parser parser;
     CommandRegistry registry;
     auto parser_result = parser.parse(std::move(str_stream));
-    auto cmd_bulder = registry.findCommand(parser_result.first);
-    auto cmd = cmd_bulder->buildCommand(parser_result.second);
+    auto cmd_builder = registry.findCommand(parser_result.first);
+    auto cmd = cmd_builder->buildCommand(parser_result.second);
     try {
         std::cout << cmd->execute() << std::endl;
     }

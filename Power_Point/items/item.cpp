@@ -1,37 +1,56 @@
 #include "Item.hpp"
+#include <iterator>
 
 int Item::_nextId = 1;
 
-Item::Item(std::unordered_map<std::string, std::string> arguments) {
+Item::Item() {
     initArguments();
-
     _id = _nextId++;
-}
-
-void Item::initArguments() {
-
-    _attributes.insert({"lWidth",1.0});
-    _attributes.insert({"lColour", "white"});
-    _attributes.insert({"fColour", "black"});
-    _attributes.insert({"lStyle", "straight"});
 }
 
 int Item::getId() const {
     return _id;
 }
 
-void Item::setLineWidth(double width) {
-    _attributes.find("lWidth")->second = width;
+void Item::initArguments() {
+
+    _attributes.insert({"-lWidth",_attributeRegistry.findAttribute("-lWidtg")->buildAttribute("1.0")});
+    _attributes.insert({"lColour", _attributeRegistry.findAttribute("-lColour")->buildAttribute("white")});
+    _attributes.insert({"fColour", _attributeRegistry.findAttribute("-fColour")->buildAttribute("black")});
+    _attributes.insert({"lStyle", _attributeRegistry.findAttribute("-lStyle")->buildAttribute("straight")});
 }
 
-void Item::setLineColour(std::string colour) {
-    _attributes.find("lColour")->second = colour;
+
+
+void Item::setLineColor(std::string color) {
+    auto attribute_builder = _attributeRegistry.findAttribute("-lColor");
+    _attributes["-lColour"] = attribute_builder->buildAttribute(color);
+
 }
 
-void Item::setFillColour(std::string colour) {
-    _attributes.find("fColour")->second = colour;
+void Item::setAttribute(const std::pair<std::string,std::string>& attribute) {
+     auto attribute_builder = _attributeRegistry.findAttribute(attribute.first);
+     _attributes[attribute.first] = attribute_builder->buildAttribute(attribute.second);
 }
 
-void Item::setLineStyle(std::string style) {
-    _attributes.find("lStyle")->second = style;
+void Item::setAttributes(const std::unordered_map<std::string,std::string>& attributes) {
+    for(const auto& attribute : attributes)
+        setAttribute(attribute);
 }
+
+
+// void Item::setLineWidth(double width) {
+//     _attributes.find("lWidth")->second = width;
+// }
+
+// void Item::setLineColour(std::string colour) {
+//     _attributes.find("lColour")->second = colour;
+// }
+
+// void Item::setFillColour(std::string colour) {
+//     _attributes.find("fColour")->second = colour;
+// }
+
+// void Item::setLineStyle(std::string style) {
+//     _attributes.find("lStyle")->second = style;
+// }
