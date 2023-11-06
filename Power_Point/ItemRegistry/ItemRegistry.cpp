@@ -1,7 +1,7 @@
 #include "ItemRegistry.hpp"
 #include "../ItemBuilder/ItemBuilder.hpp"
 #include "../ItemBuilder/RectangleItemBuilder.hpp"
-#inlcude <stdexcept>
+#include <stdexcept>
 #include <iostream>
 
 ItemRegistry::ItemRegistry() {
@@ -12,10 +12,15 @@ void ItemRegistry::init() {
     _items.insert({"rectangle",ItemBuilderPtr(new RectangleItemBuilder)});
 }
 
+ItemRegistry& ItemRegistry::getItemRegistery() {
+    static ItemRegistry itemReg;
+    return itemReg;
+}
+
 auto ItemRegistry::findItem(std::string item) -> ItemBuilderPtr {
     auto it = _items.find(item);
     if(it == _items.end()) {
-        throw std::runtime_error("Invalid item name");
+        throw std::out_of_range("Item not found");
     }
     return std::move(it->second);
 }

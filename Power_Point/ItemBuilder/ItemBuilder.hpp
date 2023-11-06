@@ -6,7 +6,7 @@
 //class Item;
 class IItemBuilder {
 public:
-    virtual Item* buildItem(std::unordered_map<std::string, std::string>) = 0;
+    virtual Item* buildItem() = 0;
     virtual ~IItemBuilder() = default;
 
 private:

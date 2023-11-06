@@ -6,11 +6,17 @@
 
 class Add : public Command {
 public:
-    Add();
-    virtual std::string execute();
+    /*
+    * addArgument(Key,Value) function is used in buildCommand fonction of 
+    * AddCommandBuilder class. When it creates the Add command, then adds arguments in it
+    * from the map which is got from parser.
+    */
+    virtual void addArgument(Key,Value) override;
+    virtual std::string execute() override;
+
 private:
-    void initArguments();
-    ItemRegistry* itemRegistry;
+    //void initArguments();
+    ItemRegistry& itemRegistry{ItemRegistry::getItemRegistery()};
 };
 
 #endif //__ADD_COMMAND_HPP__
