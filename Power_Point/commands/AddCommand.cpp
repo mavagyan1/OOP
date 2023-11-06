@@ -1,8 +1,8 @@
 #include "AddCommand.hpp"
 
-Add::Add() {
-    //initArguments();
-}
+//Add::Add() {
+//    //initArguments();
+//}
 void Add::addArgument(Key key, Value val) {
     _arguments[key] = val;
 }
