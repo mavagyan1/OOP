@@ -5,6 +5,7 @@
 #include <sstream>
 #include <string>
 #include <unordered_map>
+#include "../Document/Document.hpp"
 
 class Command {
 protected:
@@ -18,12 +19,15 @@ public:
     * special way, e.g the add command does not neet to check the passed attribues, because 
     * the attributs are represented as a separated class, and checking is beeing done in that class. 
     */
+    Command() : _document(Document::getDocument()) { }
     virtual void addArgument(Key,Value) = 0;
     virtual std::string execute() = 0;
     virtual ~Command() = default;
 
 protected:
     Arguments _arguments;
+    Document& _document;
+
 };
 
 #endif //__Command_HPP__

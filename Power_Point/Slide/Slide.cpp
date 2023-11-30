@@ -1,4 +1,4 @@
-#include "ItemStorage.hpp"
+#include "Slide.hpp"
 
 Item* ItemStorage::getItem(int itemId) {
     return _items[itemId];

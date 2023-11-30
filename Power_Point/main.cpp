@@ -1,7 +1,7 @@
 //#include "controller/CommandController.hpp"
 #include "parser/Parser.hpp"
-#include "commandBuilders/AddCommandBuilder.hpp"
 #include "commandRegistry/CommandRegistry.hpp"
+#include "commandBuilders/AddCommandBuilder.hpp"
 #include <sstream>
 #include <string>
 #include <iostream>

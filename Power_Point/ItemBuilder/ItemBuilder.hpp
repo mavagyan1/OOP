@@ -2,15 +2,16 @@
 #define  __ITEM_BUILDER_HPP__
 #include "../items/Item.hpp"
 #include "../AttributeRegistry/AttributeRegistry.hpp"
-
+#include <string>
 //class Item;
 class IItemBuilder {
 public:
-    virtual Item* buildItem() = 0;
+    virtual Item* buildItem(std::unordered_map<std::string,std::string>&) = 0;
     virtual ~IItemBuilder() = default;
 
-private:
+protected:
 
+    void configureItem(std::unordered_map<std::string,std::string>&, Item*);
     AttributeRegistry* attributeRegistry;
 };
 

@@ -3,8 +3,9 @@
 #include "../commandBuilders/AddCommandBuilder.hpp"
 #include <iostream>
 
+
 CommandRegistry::CommandRegistry() {
-        init();
+    init();
 }
 
 void CommandRegistry::init() {

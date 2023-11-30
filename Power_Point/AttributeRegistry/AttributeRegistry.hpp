@@ -1,7 +1,7 @@
 #ifndef __ATTRIBUTE_REGISTRY_HPP__
 #define __ATTRIBUTE_REGISTRY_HPP__
 
-#include "../AttributeBuilder/AttributeBuilder.hpp"
+#include "../AttributeBuilder/AttributeSetter.hpp"
 #include <memory>
 #include <string>
 #include <unordered_map>
@@ -18,14 +18,14 @@
 
 class AttributeRegistry {
 private:
-    using AttributeBuilderPtr = std::unique_ptr<IAttributeBuilder>;
-    using Registry = std::unordered_map<std::string,AttributeBuilderPtr>;
+    using AttributeSetterPtr = std::unique_ptr<IAttributeSetter>;
+    using Registry = std::unordered_map<std::string,AttributeSetterPtr>;
 
 public:
     static AttributeRegistry& getAttributeRegistery();
     AttributeRegistry(const AttributeRegistry&) = delete;
     AttributeRegistry& operator=(const AttributeRegistry&) = delete;
-    AttributeBuilderPtr findAttribute(std::string);
+    AttributeSetterPtr findAttributeSetter(std::string);
 
 private:
     AttributeRegistry();
