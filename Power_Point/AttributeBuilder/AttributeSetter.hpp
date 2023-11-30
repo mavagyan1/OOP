@@ -1,4 +1,6 @@
-#include "../Attribute/Attribute.hpp"
+#ifndef __OOP_ATTRIBUTE_SETTER_HPP__
+#define __OOP_ATTRIBUTE_SETTER_HPP__
+
 #include "../AttributeRegistry/AttributeRegistry.hpp"
 #include <string>
 /*
@@ -7,9 +9,11 @@
 * in which the name of Attribute maps to the appropriate AttributrBuilder.
 *
 */
-
-class IAttributeBuilder {
+class Item;
+class IAttributeSetter {
 public:
-    virtual  Attribute* buildAttribute(std::string);
-    virtual ~IAttributeBuilder() = default;
+    virtual void setAttribute(Item&,std::string) = 0;
+    virtual ~IAttributeSetter() = default;
 };
+
+#endif //__OOP_ATTRIBUTE_SETTER_HPP__

@@ -5,14 +5,15 @@
 
 //singleton class
 class Document {
+private:
+    using slideId = int;
 public:
     Document(const Document&) = delete;
     Document& operator = (const Document&) = delete;
     static Document& getDocument();
     void addItemToSlide(Item&&);
-    SlideId addSlide();
+    slideId addSlide(); //SlideId
 private:
-    using slideId = int;
     std::unordered_map<slideId , Slide> document;
     Document();
 

@@ -3,9 +3,10 @@
 
 int Item::_nextId = 1;
 
-Item::Item() {
+Item::Item(): color{0} {
     initArguments();
     _id = _nextId++;
+
 }
 
 int Item::getId() const {
@@ -22,9 +23,13 @@ void Item::initArguments() {
 
 
 
-void Item::setLineColor(std::string color) {
-    auto attribute_builder = _attributeRegistry.findAttribute("-lColor");
-    _attributes["-lColour"] = attribute_builder->buildAttribute(color);
+void Item::setColor(std::string color) {
+    try {
+        int _color  = stoi(color)
+    }
+    catch(const std::invalid_argument& ia) {
+        std::cerr << "Invalid argument: " << ia.what() << std::endl;
+    }
 
 }
 

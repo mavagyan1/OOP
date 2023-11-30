@@ -21,7 +21,7 @@ public:
     CommandRegistry();
     CommandBuilderPtr findCommand(std::string);
 
- private:
+private:
     Registry commands;
     void init();
 

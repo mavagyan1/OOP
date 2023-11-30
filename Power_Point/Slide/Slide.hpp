@@ -1,10 +1,10 @@
-#ifndef __ITEM_STORAGE_HPP__
-#define __ITEM_STORAGE_HPP__
+#ifndef __OOP_SLIDE_HPP__
+#define __OOP_SLIDE_HPP__
 
-#include "items/Item.hpp"
+#include "../items/Item.hpp"
 #include <vector>
 
-class ItemStorage {
+class Slide {
 public:
 
     void addItem(Item* command);
@@ -17,4 +17,4 @@ public:
 private:
     std::vector<Item*> _items; // Maybe change to map
 };
-#endif //__ITEM_STORAGE_HPP__
+#endif //__OOP_SLIDE_HPP__

@@ -1,3 +1,6 @@
+#ifndef __OOP_COMMAND_CONTROLLER_HPP__
+#define __OOP_COMMAND_CONTROLLER_HPP__
+
 #include "../input/consoleInput.hpp"
 #include "../output/consoleOutput.hpp"
 #include "../parser/Parser.hpp"
@@ -13,3 +16,5 @@ private:
     Parser _parser;
     CommandRegistry _command_builder;
 };
+
+#endif //__OOP_COMMAND_CONTROLLER_HPP__
