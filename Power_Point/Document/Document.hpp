@@ -11,7 +11,7 @@ public:
     Document(const Document&) = delete;
     Document& operator = (const Document&) = delete;
     static Document& getDocument();
-    void addItemToSlide(Item&&);
+    void addItemToSlide(Item&&,SlideId);
     slideId addSlide(); //SlideId
 private:
     std::unordered_map<slideId , Slide> document;

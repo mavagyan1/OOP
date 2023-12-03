@@ -1,5 +1,4 @@
 #include "CommandRegistry.hpp"
-//#include "../commands/AddCommand.hpp"
 #include "../commandBuilders/AddCommandBuilder.hpp"
 #include <iostream>
 
