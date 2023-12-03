@@ -20,7 +20,7 @@ ItemRegistry& ItemRegistry::getItemRegistery() {
 auto ItemRegistry::findItem(std::string item) -> ItemBuilderPtr {
     auto it = _items.find(item);
     if(it == _items.end()) {
-        throw std::out_of_range("Item not found");
+        throw std::runtime_error("Item not found");
     }
     return std::move(it->second);
 }

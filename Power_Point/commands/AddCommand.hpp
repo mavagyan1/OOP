@@ -11,12 +11,10 @@ public:
     * AddCommandBuilder class. When it creates the Add command, then adds arguments in it
     * from the map which is got from parser.
     */
-    Add() = default;
     virtual void addArgument(Key,Value) override;
     virtual std::string execute() override;
 
 private:
-    //void initArguments();
     ItemRegistry& itemRegistry{ItemRegistry::getItemRegistery()};
 };
 

@@ -1,5 +1,7 @@
 #include "Command.hpp"
 
+Command::Command() : _document(Document::getDocument()) { }
+
 // void Command::addArgument(Key key, Value val) {
 //     if(checkArgument(key))
 //         _arguments[key] = val;

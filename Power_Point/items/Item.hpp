@@ -6,8 +6,8 @@
 #include <utility> //std::pair
 #include <unordered_map>
 #include "../AttributeRegistry/AttributeRegistry.hpp"
-#include "Item Attributes/ElineStyle.h"
-#include "Item Attributes/Color.h"
+#include "Item Attributes/ElineStyle.hpp"
+#include "Item Attributes/Color.hpp"
 
 class Item {
 public:
@@ -15,7 +15,7 @@ public:
     void setFillColour(Color);
     void setLineStyle(LineStyle);
     void setLineColor(Color);
-    virtual void draw();
+    //virtual void draw();
 
 protected:
     Item();

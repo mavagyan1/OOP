@@ -1,5 +1,5 @@
-#ifndef __ATTRIBUTE_REGISTRY_HPP__
-#define __ATTRIBUTE_REGISTRY_HPP__
+#ifndef __OOP_ATTRIBUTE_REGISTRY_HPP__
+#define __OOP_ATTRIBUTE_REGISTRY_HPP__
 
 #include "../AttributeBuilder/AttributeSetter.hpp"
 #include <memory>
@@ -7,15 +7,11 @@
 #include <unordered_map>
 
 /*
-* This class serves as a registry which maps the name of attribute to its appropriate builder.
-* To build the attribute we need, first we have to find it in this registry by "findAttribute"
-* function. It retruns a smart pointer to the appropriate builder. Then we just have to call buildAttribute function on it.
-*/
-
-/*
+* This class serves as a registry which maps the name of attribute to its appropriate setter.
+*
 * This is a Singleton class
 */
-
+class IAttributeSetter; //Error in   using AttributeSetterPtr = std::unique_ptr<IAttributeSetter>; without this declaration
 class AttributeRegistry {
 private:
     using AttributeSetterPtr = std::unique_ptr<IAttributeSetter>;
@@ -29,8 +25,8 @@ public:
 
 private:
     AttributeRegistry();
-    Registry _attributes;
     void init();
+    Registry _attributes;
 };
 
-#endif //__ATTRIBUTE_REGISTRY_HPP__
+#endif //__OOP_ATTRIBUTE_REGISTRY_HPP__

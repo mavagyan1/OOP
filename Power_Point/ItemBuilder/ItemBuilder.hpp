@@ -3,15 +3,19 @@
 #include "../items/Item.hpp"
 #include "../AttributeRegistry/AttributeRegistry.hpp"
 #include <string>
-//class Item;
+
 class IItemBuilder {
+protected:
+    using Key = std::string;
+    using Value = std::string;
+
 public:
-    virtual Item* buildItem(std::unordered_map<std::string,std::string>&) = 0;
+    virtual Item* buildItem(std::unordered_map<Key,Value>&) = 0;
     virtual ~IItemBuilder() = default;
 
 protected:
 
-    void configureItem(std::unordered_map<std::string,std::string>&, Item*);
+    void configureItem(std::unordered_map<Key,Value>&, Item*);
     AttributeRegistry* attributeRegistry;
 };
 

@@ -4,17 +4,17 @@
 #include "../commandRegistry/CommandRegistry.hpp"
 #include "../commands/Command.hpp"
 #include <string>
-#include <sstream> //std::stringstream
+#include <sstream> //std::istigstream
 #include <utility> //std::pair
 
 
 class Parser {
 private:
     using Argument = std::pair<std::string,std::string>;
-    using ParseResult = std::pair<std::string,std::vector<Argument>>;
-
+   
 public:
-    ParseResult parse(std::stringstream);
+    using ParseResult = std::pair<std::string,std::vector<Argument>>;
+    ParseResult parse(std::istringstream);
 };
 
 #endif //__PARSER_HPP__

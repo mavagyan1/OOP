@@ -12,7 +12,7 @@ int main() {
     /*
     * Testing some functionality
     */
-    std::stringstream str_stream{"add -name Table"};
+    std::istringstream str_stream("add -name rectangle");
     Parser parser;
     CommandRegistry registry;
     auto parser_result = parser.parse(std::move(str_stream));

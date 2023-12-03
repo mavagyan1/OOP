@@ -1,5 +1,5 @@
-#ifndef __COMMAND_REGISTRY_HPP__
-#define __COMMAND_REGISTRY_HPP__
+#ifndef __OOP_COMMAND_REGISTRY_HPP__
+#define __OOP_COMMAND_REGISTRY_HPP__
 
 #include "../commands/Command.hpp"
 #include "../commandBuilders/CommandBuilder.hpp"
@@ -22,8 +22,8 @@ public:
     CommandBuilderPtr findCommand(std::string);
 
 private:
-    Registry commands;
-    void init();
+    void init(); 
+    Registry _commands;
 
 };
-#endif //__COMMAND_REGISTRY_HPP__
+#endif //__OOP_COMMAND_REGISTRY_HPP__

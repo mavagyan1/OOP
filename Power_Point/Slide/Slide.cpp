@@ -1,17 +1,26 @@
 #include "Slide.hpp"
 
-Item* ItemStorage::getItem(int itemId) {
+Item* Slide::getItem(int itemId) {
     return _items[itemId];
 }
 
-void ItemStorage::addItem(Item* item){
-    _items.push_back(item);
-}
-
-void ItemStorage::removeItem(int itemId) {
+void Slide::changeItem(int itemdId) {
     //TODO implement
 }
 
-void ItemStorage::changeItem(int itemdId) {
-    //TODO implement
+Slide::Iterator Slide::begin() {
+    return _items.begin();
 }
+
+Slide::Iterator Slide::end() {
+    return _items.end();
+}
+
+
+// void ItemStorage::addItem(Item* item){
+//     _items.push_back(item);
+// }
+
+// void ItemStorage::removeItem(int itemId) {
+//     //TODO implement
+// }

@@ -5,16 +5,20 @@
 #include <vector>
 
 class Slide {
+private:
+    using ID = int;
+    using ItemGroup = std::unordered_map<ID,Item*>;
+    using Iterator = ItemGroup::iterator;
 public:
-
-    void addItem(Item* command);
+    Iterator begin();  
+    Iterator end();
 
     Item* getItem(int commandId);
-
-    void removeItem(int commandId);
-
     void changeItem(int commandId);
+    //void removeItem(int commandId);
+    //void addItem(Item* command); 
+
 private:
-    std::vector<Item*> _items; // Maybe change to map
+    ItemGroup _items; 
 };
 #endif //__OOP_SLIDE_HPP__
