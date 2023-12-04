@@ -7,16 +7,16 @@
 #include <unordered_map>
 #include "../AttributeRegistry/AttributeRegistry.hpp"
 #include "Item Attributes/ElineStyle.hpp"
-#include "Item Attributes/Color.hpp"
 
 class Item {
+private:
+    using Color = int;
+
 public:
     // void setLineWidth(double);
     void setFillColour(Color);
     void setLineStyle(LineStyle);
     void setLineColor(Color);
-    //virtual void draw();
-
 protected:
     Item();
 
