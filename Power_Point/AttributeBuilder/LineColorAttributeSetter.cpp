@@ -1,19 +1,20 @@
 #include "LineColorAttributeSetter.hpp"
 #include "../items/Item.hpp"
-#include "../items/Item Attributes/Color.hpp"
 #include <stdexcept> //std::runtime_error
 #include <sstream> //std::istringstream
 
 
-void LineColorAttributeSetter::setAttribute(Item* item, std::string color) {
-    std::istringstream color_stream(color);
-    Color color_atr;
-
+void LineColorAttributeSetter::setAttribute(Item* item, std::string rgbStream) {
+    std::istringstream color_stream(rgbStream);
+    int r,g,b;
     char comma;
-    if (!(color_stream >> color_atr.red >> comma >> color_atr.green >> comma >> color_atr.blue)){
-        throw std::runtime_error("Inccorect color argument format");
-    }
+    color_stream >> r >> comma >> g >> comma >> b;
 
-    item->setLineColor(color_atr);
+    if (color_stream.fail() || comma != ',' || color_stream.rdbuf()->in_avail() != 0) {
+        throw std::runtime_error("Faild to read the line color attribute");
+    
+    int rgb = (r << 16) | (g << 8) | b;
+
+    item->setLineColor(rgb);
 }
 
