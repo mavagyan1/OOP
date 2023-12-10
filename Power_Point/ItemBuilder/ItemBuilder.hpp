@@ -4,19 +4,21 @@
 #include "../AttributeRegistry/AttributeRegistry.hpp"
 #include <string>
 
-class IItemBuilder {
-protected:
+class ItemBuilder {
+private:
     using Key = std::string;
     using Value = std::string;
 
 public:
-    virtual Item* buildItem(std::unordered_map<Key,Value>&) = 0;
-    virtual ~IItemBuilder() = default;
+    ItemBuilder();
+    Item* buildItem(std::unordered_map<Key,Value>& arguments);
+    ~ItemBuilder() = default;
 
-protected:
-
-    void configureItem(std::unordered_map<Key,Value>&, Item*);
-    AttributeRegistry* attributeRegistry;
+private:
+    void setGeom(std::unordered_map<Key,Value>&, Item*);
+    void setAttributes(std::unordered_map<Key,Value>&, Item*);
+    //void setAttributes(std::unordered_map<Key,Value>&, Item*);
+    AttributeRegistry& _attributeRegistry;
 };
 
 #endif //__ITEM_BUILDER_HPP__

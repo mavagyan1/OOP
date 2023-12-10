@@ -1,7 +1,7 @@
 #ifndef __OOP_ATTRIBUTE_REGISTRY_HPP__
 #define __OOP_ATTRIBUTE_REGISTRY_HPP__
 
-#include "../AttributeBuilder/AttributeSetter.hpp"
+#include "../AttributeSetGetter/AttributeSetGetter.hpp"
 #include <memory>
 #include <string>
 #include <unordered_map>
@@ -11,17 +11,17 @@
 *
 * This is a Singleton class
 */
-class IAttributeSetter; //Error in   using AttributeSetterPtr = std::unique_ptr<IAttributeSetter>; without this declaration
+class IAttributeSetGetter; //Error in   using AttributeSetGetterPtr = std::unique_ptr<IAttributeSetGetter>; without this declaration
 class AttributeRegistry {
 private:
-    using AttributeSetterPtr = std::unique_ptr<IAttributeSetter>;
-    using Registry = std::unordered_map<std::string,AttributeSetterPtr>;
+    using AttributeSetGetterPtr = std::unique_ptr<IAttributeSetGetter>;
+    using Registry = std::unordered_map<std::string,AttributeSetGetterPtr>;
 
 public:
     static AttributeRegistry& getAttributeRegistery();
     AttributeRegistry(const AttributeRegistry&) = delete;
     AttributeRegistry& operator=(const AttributeRegistry&) = delete;
-    AttributeSetterPtr findAttributeSetter(std::string);
+    AttributeSetGetterPtr findAttributeSetGetter(std::string);
 
 private:
     AttributeRegistry();

@@ -1,5 +1,6 @@
 #include "consoleInput.hpp"
 #include <iostream>
+#include <sstream>
 
 std::stringstream  ConsoleInput::read() { 
 

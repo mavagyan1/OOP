@@ -3,22 +3,27 @@
 
 #include "../items/Item.hpp"
 #include <vector>
+#include <memory>
 
 class Slide {
 private:
     using ID = int;
-    using ItemGroup = std::unordered_map<ID,Item*>;
+    using ItemPtr = std::shared_ptr<Item>;
+    using ItemGroup = std::unordered_map<ID,ItemPtr>;
     using Iterator = ItemGroup::iterator;
 public:
+    Slide();
     Iterator begin();  
     Iterator end();
-
-    Item* getItem(int commandId);
-    void changeItem(int commandId);
-    //void removeItem(int commandId);
-    //void addItem(Item* command); 
-
+    ItemPtr getItem(ID id);
+    bool isExist(ID id);
+    void addItem(ItemPtr);
+    void removeItem(ID id);
+    ID getId() const;
+    //void changeItem(int Id);
 private:
+    static ID _nextId;
+    ID _id;
     ItemGroup _items; 
 };
 #endif //__OOP_SLIDE_HPP__

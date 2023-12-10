@@ -1,7 +1,7 @@
 #include "AttributeRegistry.hpp"
-#include "../AttributeBuilder/LineColorAttributeSetter.hpp"
-#include "../AttributeBuilder/FillColorAttributeSetter.hpp"
-#include "../AttributeBuilder/LineStyleAttributeSetter.hpp"
+#include "../AttributeSetGetter/LineColorAttributeSetGetter.hpp"
+#include "../AttributeSetGetter/FillColorAttributeSetGetter.hpp"
+#include "../AttributeSetGetter/LineStyleAttributeSetGetter.hpp"
 
 #include <iostream>
 #include <memory>
@@ -17,15 +17,15 @@ AttributeRegistry& AttributeRegistry::getAttributeRegistery() {
 }
 
 void AttributeRegistry::init() {
-    _attributes.insert({"-lineColor",AttributeSetterPtr(new LineColorAttributeSetter)});
-    _attributes.insert({"-fillColor",AttributeSetterPtr(new FillColorAttributeSetter)});
-    _attributes.insert({"-lineStyle",AttributeSetterPtr(new LineStyleAttributeSetter)});
+    _attributes.insert({"-lineColor",AttributeSetGetterPtr(new LineColorAttributeSetGetter)});
+    _attributes.insert({"-fillColor",AttributeSetGetterPtr(new FillColorAttributeSetGetter)});
+    _attributes.insert({"-lineStyle",AttributeSetGetterPtr(new LineStyleAttributeSetGetter)});
 }
 
-auto AttributeRegistry::findAttributeSetter(std::string attribute ) -> AttributeSetterPtr {
+auto AttributeRegistry::findAttributeSetGetter(std::string attribute ) -> AttributeSetGetterPtr {
     auto it = _attributes.find(attribute);
     if(it == _attributes.end()) {
-        throw std::runtime_error("Attribute not found");
+        throw std::runtime_error("Attribute not found\n");
     }
     return std::move(it->second);
 }
