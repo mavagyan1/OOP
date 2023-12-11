@@ -1,36 +1,32 @@
-#ifndef __ATTRIBUTE_REGISTRY_HPP__
-#define __ATTRIBUTE_REGISTRY_HPP__
+#ifndef __OOP_ATTRIBUTE_REGISTRY_HPP__
+#define __OOP_ATTRIBUTE_REGISTRY_HPP__
 
-#include "../AttributeBuilder/AttributeBuilder.hpp"
+#include "../AttributeSetGetter/AttributeSetGetter.hpp"
 #include <memory>
 #include <string>
 #include <unordered_map>
 
 /*
-* This class serves as a registry which maps the name of attribute to its appropriate builder.
-* To build the attribute we need, first we have to find it in this registry by "findAttribute"
-* function. It retruns a smart pointer to the appropriate builder. Then we just have to call buildAttribute function on it.
-*/
-
-/*
+* This class serves as a registry which maps the name of attribute to its appropriate setter.
+*
 * This is a Singleton class
 */
-
+class IAttributeSetGetter; //Error in   using AttributeSetGetterPtr = std::unique_ptr<IAttributeSetGetter>; without this declaration
 class AttributeRegistry {
 private:
-    using AttributeBuilderPtr = std::unique_ptr<IAttributeBuilder>;
-    using Registry = std::unordered_map<std::string,AttributeBuilderPtr>;
+    using AttributeSetGetterPtr = std::unique_ptr<IAttributeSetGetter>;
+    using Registry = std::unordered_map<std::string,AttributeSetGetterPtr>;
 
 public:
     static AttributeRegistry& getAttributeRegistery();
     AttributeRegistry(const AttributeRegistry&) = delete;
     AttributeRegistry& operator=(const AttributeRegistry&) = delete;
-    AttributeBuilderPtr findAttribute(std::string);
+    AttributeSetGetterPtr findAttributeSetGetter(std::string);
 
 private:
     AttributeRegistry();
-    Registry _attributes;
     void init();
+    Registry _attributes;
 };
 
-#endif //__ATTRIBUTE_REGISTRY_HPP__
+#endif //__OOP_ATTRIBUTE_REGISTRY_HPP__

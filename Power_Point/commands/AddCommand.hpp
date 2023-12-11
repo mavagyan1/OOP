@@ -1,8 +1,7 @@
 #ifndef __ADD_COMMAND_HPP__
 #define __ADD_COMMAND_HPP__
-
-#include "../ItemRegistry/ItemRegistry.hpp"
 #include "Command.hpp"
+#include "../ShapeRegistry/ShapeRegistry.hpp"
 
 class Add : public Command {
 public:
@@ -11,12 +10,14 @@ public:
     * AddCommandBuilder class. When it creates the Add command, then adds arguments in it
     * from the map which is got from parser.
     */
-    virtual void addArgument(Key,Value) override;
+    Add();
+    void addArgument(Key,Value);
     virtual std::string execute() override;
 
 private:
-    //void initArguments();
-    ItemRegistry& itemRegistry{ItemRegistry::getItemRegistery()};
+    std::string addSlide();
+    std::string addItem();
+    ShapeRegistry& _shapeReg;
 };
 
 #endif //__ADD_COMMAND_HPP__

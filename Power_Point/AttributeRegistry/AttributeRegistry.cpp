@@ -1,8 +1,11 @@
 #include "AttributeRegistry.hpp"
-#include "../AttributeBuilder/ColorAttributeBuilder.hpp"
+#include "../AttributeSetGetter/LineColorAttributeSetGetter.hpp"
+#include "../AttributeSetGetter/FillColorAttributeSetGetter.hpp"
+#include "../AttributeSetGetter/LineStyleAttributeSetGetter.hpp"
+
 #include <iostream>
 #include <memory>
-#include <stdexcept> //std::out_of_range
+#include <stdexcept> //std::runtime_error
 
 AttributeRegistry::AttributeRegistry(){
     init();
@@ -14,13 +17,15 @@ AttributeRegistry& AttributeRegistry::getAttributeRegistery() {
 }
 
 void AttributeRegistry::init() {
-    _attributes.insert({"-color",AttributeBuilderPtr(new ColorAttributeBuilder)});
+    _attributes.insert({"-lineColor",AttributeSetGetterPtr(new LineColorAttributeSetGetter)});
+    _attributes.insert({"-fillColor",AttributeSetGetterPtr(new FillColorAttributeSetGetter)});
+    _attributes.insert({"-lineStyle",AttributeSetGetterPtr(new LineStyleAttributeSetGetter)});
 }
 
-auto AttributeRegistry::findAttribute(std::string attribute ) -> AttributeBuilderPtr {
+auto AttributeRegistry::findAttributeSetGetter(std::string attribute ) -> AttributeSetGetterPtr {
     auto it = _attributes.find(attribute);
     if(it == _attributes.end()) {
-        throw std::out_of_range("Attribute not found");
+        throw std::runtime_error("Attribute not found\n");
     }
     return std::move(it->second);
 }

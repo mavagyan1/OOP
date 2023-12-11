@@ -1,5 +1,6 @@
 #ifndef __ITEM_REGISTRY_HPP__
 #define __ITEM_REGISTRY_HPP__
+
 #include "../ItemBuilder/ItemBuilder.hpp"
 #include <memory> //std::unique_ptr
 #include <unordered_map>
@@ -32,4 +33,4 @@ private:
 };
 
 
-#endif //__ITEM_TEGISTRY_HPP__
+#endif //__ITEM_REGISTRY_HPP__

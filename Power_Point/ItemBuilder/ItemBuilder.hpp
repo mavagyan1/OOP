@@ -2,16 +2,23 @@
 #define  __ITEM_BUILDER_HPP__
 #include "../items/Item.hpp"
 #include "../AttributeRegistry/AttributeRegistry.hpp"
+#include <string>
 
-//class Item;
-class IItemBuilder {
+class ItemBuilder {
+private:
+    using Key = std::string;
+    using Value = std::string;
+
 public:
-    virtual Item* buildItem() = 0;
-    virtual ~IItemBuilder() = default;
+    ItemBuilder();
+    Item* buildItem(std::unordered_map<Key,Value>& arguments);
+    ~ItemBuilder() = default;
 
 private:
-
-    AttributeRegistry* attributeRegistry;
+    void setGeom(std::unordered_map<Key,Value>&, Item*);
+    void setAttributes(std::unordered_map<Key,Value>&, Item*);
+    //void setAttributes(std::unordered_map<Key,Value>&, Item*);
+    AttributeRegistry& _attributeRegistry;
 };
 
 #endif //__ITEM_BUILDER_HPP__

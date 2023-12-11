@@ -1,56 +1,67 @@
 #include "Item.hpp"
 #include <iterator>
+#include <stdexcept>
 
 int Item::_nextId = 1;
 
-Item::Item() {
-    initArguments();
+Item::Item(std::string type) : _shapeReg(ShapeRegistry::getShapeRegistry()) {
+    if( !(_shapeReg.contains(type)) )
+        throw std::runtime_error("Incorrect shape type\n");
+    _type = type;
     _id = _nextId++;
+}
+
+std::string Item::getType() {
+    return _type;
 }
 
 int Item::getId() const {
     return _id;
 }
 
-void Item::initArguments() {
-
-    _attributes.insert({"-lWidth",_attributeRegistry.findAttribute("-lWidtg")->buildAttribute("1.0")});
-    _attributes.insert({"lColour", _attributeRegistry.findAttribute("-lColour")->buildAttribute("white")});
-    _attributes.insert({"fColour", _attributeRegistry.findAttribute("-fColour")->buildAttribute("black")});
-    _attributes.insert({"lStyle", _attributeRegistry.findAttribute("-lStyle")->buildAttribute("straight")});
+void Item::setFillColor(Color color) {
+    _fillColor = color;
 }
 
-
-
-void Item::setLineColor(std::string color) {
-    auto attribute_builder = _attributeRegistry.findAttribute("-lColor");
-    _attributes["-lColour"] = attribute_builder->buildAttribute(color);
-
+void Item::setLineColor(Color color) {
+    _lineColor = color;
 }
 
-void Item::setAttribute(const std::pair<std::string,std::string>& attribute) {
-     auto attribute_builder = _attributeRegistry.findAttribute(attribute.first);
-     _attributes[attribute.first] = attribute_builder->buildAttribute(attribute.second);
+void Item::setLineStyle(LineStyle style) {
+    _lineStyle = style;
 }
 
-void Item::setAttributes(const std::unordered_map<std::string,std::string>& attributes) {
-    for(const auto& attribute : attributes)
-        setAttribute(attribute);
+auto Item::getFillColor() const -> Color{
+    return _fillColor;
 }
 
+auto Item::getLineColor() const -> Color{
+    return _lineColor;
+}
 
-// void Item::setLineWidth(double width) {
-//     _attributes.find("lWidth")->second = width;
-// }
+auto Item::getLineStyle() const -> LineStyle {
+    return _lineStyle;
+}
 
-// void Item::setLineColour(std::string colour) {
-//     _attributes.find("lColour")->second = colour;
-// }
+void Item::setGeom(int x1, int y1, int x2, int y2 ) {
+    _geom.topLeftX = x1;
+    _geom.topLeftY = y1;
+    _geom.buttomRightX = x2;
+    _geom.buttomRightY = y2; 
+}
 
-// void Item::setFillColour(std::string colour) {
-//     _attributes.find("fColour")->second = colour;
-// }
+int Item::getButtomRightX() const {
+    return _geom.buttomRightX;
+}
 
-// void Item::setLineStyle(std::string style) {
-//     _attributes.find("lStyle")->second = style;
-// }
+int Item::getButtomRightY() const {
+    return _geom.buttomRightY;
+}
+
+int Item::getTopLeftX() const {
+    return _geom.topLeftX;
+}
+
+int Item::getTopLeftY() const {
+    return _geom.topLeftY;
+}

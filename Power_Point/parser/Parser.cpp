@@ -1,20 +1,20 @@
 #include "Parser.hpp"
 #include <stdexcept>
 
-//    using ParseResult = std::pair<std::string,std::vector<Argument>>;
-
-
-auto Parser::parse(std::stringstream inputStream) -> ParseResult {
+auto Parser::parse(std::istream& inputStream) -> ParseResult {
     ParseResult res;
     std::string key;
     std::string value;
 
-    inputStream >> res.first;
+    if (!(inputStream >> res.first))
+        throw std::runtime_error("Faild to read the command\n");
 
-    while (inputStream >> key && inputStream >> value) {
-        res.second.push_back(std::make_pair(key,value));
-        //add exeption handler
+
+    while (inputStream >> key) {
+        if (!(inputStream >> value)) 
+            throw std::runtime_error("Missing argument value\n");
+        res.second.push_back(std::make_pair(key, value));
     }
-    
+
     return res;
 }
