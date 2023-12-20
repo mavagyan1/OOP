@@ -6,7 +6,7 @@
 
 class AddCommandBuilder : public ICommandBuilder {
 public:
-   Command* buildCommand(Arguments& args) override;
+   CommandPtr buildCommand(Arguments& args) override;
    
 };
 

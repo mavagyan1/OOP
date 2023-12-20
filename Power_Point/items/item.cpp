@@ -11,6 +11,18 @@ Item::Item(std::string type) : _shapeReg(ShapeRegistry::getShapeRegistry()) {
     _id = _nextId++;
 }
 
+std::shared_ptr<IShape> Item::getShape() {
+    return _shapeReg.findShape(_type)->clone(this);
+}
+
+void Item::setGeom(int x1, int y1, int x2, int y2 ) {
+    _geom.topLeftX = x1;
+    _geom.topLeftY = y1;
+    _geom.buttomRightX = x2;
+    _geom.buttomRightY = y2; 
+}
+
+
 std::string Item::getType() {
     return _type;
 }
@@ -41,13 +53,6 @@ auto Item::getLineColor() const -> Color{
 
 auto Item::getLineStyle() const -> LineStyle {
     return _lineStyle;
-}
-
-void Item::setGeom(int x1, int y1, int x2, int y2 ) {
-    _geom.topLeftX = x1;
-    _geom.topLeftY = y1;
-    _geom.buttomRightX = x2;
-    _geom.buttomRightY = y2; 
 }
 
 int Item::getButtomRightX() const {

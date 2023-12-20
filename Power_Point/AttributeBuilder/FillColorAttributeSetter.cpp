@@ -15,6 +15,6 @@
     int rgba = (r << 24) | (g << 16) | (b << 8) | a;
 
     
-    item->setFillColour(rgba);
+    item->setFillColor(rgba);
 }
 

@@ -14,7 +14,7 @@
 
 class CommandRegistry {
 private:
-    using CommandBuilderPtr = std::unique_ptr<ICommandBuilder>;
+    using CommandBuilderPtr = std::shared_ptr<ICommandBuilder>;
     using Registry = std::unordered_map<std::string, CommandBuilderPtr>;
 
 public: 

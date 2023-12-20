@@ -19,9 +19,9 @@ class ICommandBuilder {
 protected:
     using Argument = std::pair<std::string,std::string>;
     using Arguments = std::vector<Argument>;
-    using CommandPtr = std::unique_ptr<Command>;
+    using CommandPtr = std::shared_ptr<Command>;
 public:
-    virtual Command* buildCommand(Arguments&) = 0;
+    virtual CommandPtr buildCommand(Arguments&) = 0;
     virtual ~ICommandBuilder() = default;
 };
 #endif //PARSER_COMMANDBUILDER_H

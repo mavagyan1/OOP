@@ -25,3 +25,7 @@ void CommandController::run(){
         }
     }
 }
+
+void CommandController::off() {
+    isOn = false;
+}
