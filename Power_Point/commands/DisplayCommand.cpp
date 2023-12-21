@@ -9,6 +9,8 @@ std::string Display::execute() {
        for(auto slideIt = (*it)->begin(); slideIt != (*it)->end(); ++slideIt )
             print(slideIt->second);
     }
+    
+    return {};
 }
 
 void Display::print(std::shared_ptr<Item> item) {
