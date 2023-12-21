@@ -1,6 +1,7 @@
 #include "RemoveSlideCommand.hpp"
 #include <stdexcept>
 #include "../Application.hpp"
+#include "../Actions/removeSlide.hpp"
 
 void RemoveSlide::addArgument(Key key, Value value) {
     _arguments[key] = value;
@@ -11,7 +12,9 @@ std::string RemoveSlide::execute() {
     if(iter == _arguments.end())
         throw std::runtime_error("Missing slide id\n");
     auto slideId = stoi(iter->second);
-    Application::getApplication().getDocument().removeSlide(slideId);
+    
+    auto action = std::make_shared<RemoveSlideAction>(slideId);
+    Application::getApplication().getDirector().doAction(action);
 
     return "Removed slide\n";
 }

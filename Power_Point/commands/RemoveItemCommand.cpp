@@ -1,6 +1,7 @@
 #include "RemoveItemCommand.hpp"
 #include <stdexcept>
 #include "../Application.hpp"
+#include "../Actions/removeItemAction.hpp"
 
 void RemoveItem::addArgument(Key key, Value value) {
     _arguments[key] = value;
@@ -12,17 +13,8 @@ std::string RemoveItem::execute() {
         throw std::runtime_error("Missing slide id\n");
 
     auto itemId = stoi(iter->second);
-    int slideId = 0;
-    auto& doc = Application::getApplication().getDocument();
-    for(auto it = doc.begin(); it != doc.end(); ++it) {
-        if( (*it)->isExist(itemId) ) 
-            slideId = (*it)->getId();
-    }
-
-    if(slideId)
-        doc.getSlide(slideId)->removeItem(itemId);
-    else
-        throw std::runtime_error("Item with provided ID does not eist\n");
+    auto action = std::make_shared<RemveItemAction>(itemId);
+    Application::getApplication().getDirector().doAction(action);
 
     return "Removed item\n";
 }
