@@ -24,7 +24,6 @@ private:
     Director& _dir;
     CommandController _controller;
 
-
 };
 
 #endif //__APPLICATION_HPP__
