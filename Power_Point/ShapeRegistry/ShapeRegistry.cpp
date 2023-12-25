@@ -1,5 +1,6 @@
 #include "ShapeRegistry.hpp"
 #include "../shapes/TriangleShape.hpp"
+#include "../shapes/RectangleShape.hpp"
 #include <stdexcept>
 
 
@@ -10,6 +11,7 @@ ShapeRegistry::ShapeRegistry() {
 
 void ShapeRegistry::init() {
     _shapes.insert({"triangle",std::make_unique<TriangleShape>()});
+    _shapes.insert({"rectangle",std::make_unique<RectangleleShape>()});
 
 }
 ShapeRegistry& ShapeRegistry::getShapeRegistry() {

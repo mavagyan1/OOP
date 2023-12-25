@@ -17,7 +17,6 @@ public:
 private:
     void setGeom(std::unordered_map<Key,Value>&, Item*);
     void setAttributes(std::unordered_map<Key,Value>&, Item*);
-    //void setAttributes(std::unordered_map<Key,Value>&, Item*);
     AttributeRegistry& _attributeRegistry;
 };
 

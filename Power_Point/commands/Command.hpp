@@ -13,7 +13,7 @@ protected:
 
 public:
   
-    Command();
+    Command() = default;
     virtual std::string execute() = 0;
     virtual ~Command() = default;
 

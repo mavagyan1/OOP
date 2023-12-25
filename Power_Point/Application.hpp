@@ -11,6 +11,7 @@ public:
     Application& operator=(const Application&) = delete;
     static Application& getApplication();
     void run();
+    void stop();
 
     Director& getDirector();
     Document& getDocument();
@@ -22,7 +23,6 @@ private:
     Document& _doc;
     Director& _dir;
     CommandController _controller;
-
 
 };
 

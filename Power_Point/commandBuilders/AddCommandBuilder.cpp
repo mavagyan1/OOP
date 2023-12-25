@@ -5,8 +5,8 @@
 #include <memory> 
 
 
-Command* AddCommandBuilder::buildCommand(Arguments& args) {
-    auto cmd = new Add{};
+auto AddCommandBuilder::buildCommand(Arguments& args) -> CommandPtr{
+    auto cmd = std::make_shared<Add>();
 
     for(auto it = args.begin(); it != args.end(); ++it) {
         auto key = it->first;

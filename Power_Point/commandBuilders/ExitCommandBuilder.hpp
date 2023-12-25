@@ -4,8 +4,8 @@
 #include "../commands/ExitCommand.hpp"
 
 class ExitCommandBuilder : public ICommandBuilder {
-    Command* buildCommand(Arguments& args) override {
-        return new Exit{};
+    CommandPtr buildCommand(Arguments& args) override {
+        return std::make_shared<Exit>();
     };
 };
 

@@ -24,3 +24,7 @@ Director& Application::getDirector() {
 Document& Application::getDocument() {
     return _doc;
 }
+
+void Application::stop() {
+    _controller.off();
+}

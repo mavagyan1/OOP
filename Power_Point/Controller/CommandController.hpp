@@ -6,10 +6,10 @@
 #include "../output/consoleOutput.hpp"
 #include "../parser/Parser.hpp"
 #include "../commandRegistry/CommandRegistry.hpp"
-
 class CommandController {
 public:
     CommandController(std::istream&, std::ostream&);
+    void off();
     void run();
 
 private:

@@ -8,6 +8,7 @@ CommandController::CommandController(std::istream& input, std::ostream& output)
   _output(output) { }
 
 void CommandController::run(){
+    
     while(isOn) {
         std::string userInput;
         std::getline(_input,userInput);
@@ -23,4 +24,8 @@ void CommandController::run(){
             _output << exp.what();
         }
     }
+}
+
+void CommandController::off() {
+    isOn = false;
 }

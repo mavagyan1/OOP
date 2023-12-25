@@ -55,6 +55,8 @@ std::string Add::addItem() {
     auto item = std::shared_ptr<Item>(ItemBuilder().buildItem(_arguments));
     auto action = std::make_shared<AddItemAction>(slide,item);
     Application::getApplication().getDirector().doAction(action);
+
+    return "Item is added\n";
 }
 
 

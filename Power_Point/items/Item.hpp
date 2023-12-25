@@ -8,6 +8,7 @@
 #include "../AttributeRegistry/AttributeRegistry.hpp"
 #include "Item Attributes/ElineStyle.hpp"
 #include "../ShapeRegistry/ShapeRegistry.hpp"
+#include "../shapes/IShape.hpp"
 class Item {
 private:
     using Color = int;
@@ -27,6 +28,7 @@ public:
     int getTopLeftY() const;
     int getButtomRightX() const;
     int getButtomRightY() const;
+    std::shared_ptr<IShape> getShape();
 
 private:
 
